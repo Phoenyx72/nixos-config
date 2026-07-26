@@ -22,7 +22,7 @@
 #      CUDA_PATH = ollamaCudaToolkit;
 #      CUDAToolkit_ROOT = ollamaCudaToolkit;
 ##    };
-  });
+#  });
 #in
 {
   security.polkit.enable = true;

@@ -15,7 +15,7 @@
             "maxWindowIcons": 2,
             "occupiedBg": false,
             "perMonitorWorkspaces": true,
-            "shown": 5
+            "shown": 6
         }
     },
     "dashboard": {
@@ -23,6 +23,17 @@
             "showBattery": false
         },
         "showWeather": false
+    },
+    "general": {
+        "apps": {
+            "explorer": [
+                "nautilus",
+                "--new-window"
+            ],
+            "terminal": [
+                "kitty"
+            ]
+        }
     },
     "services": {
         "gpuType": "NVIDIA",
