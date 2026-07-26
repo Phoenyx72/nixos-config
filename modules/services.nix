@@ -1,5 +1,29 @@
 { pkgs, jellyfinPkgs, ... }:
 
+#let
+#  ollamaCudaToolkit = pkgs.buildEnv {
+#    name = "ollama-cuda-toolkit";
+#    paths = with pkgs.cudaPackages; [
+      #(pkgs.lib.getLib cuda_cudart)
+      #(pkgs.lib.getLib libcublas)
+      #(pkgs.lib.getLib cccl)
+      #(pkgs.lib.getOutput "static" cuda_cudart)
+      #(pkgs.lib.getBin cuda_nvcc)
+#      cuda_nvcc
+#      cuda_cudart
+#      libcublas
+#      cccl
+#    ];
+#    ignoreCollisions = true;
+#  };
+
+#  ollamaCuda = pkgs.ollama-cuda.overrideAttrs (old: {
+#    env = (old.env or { }) // {
+#      CUDA_PATH = ollamaCudaToolkit;
+#      CUDAToolkit_ROOT = ollamaCudaToolkit;
+##    };
+  });
+#in
 {
   security.polkit.enable = true;
 
@@ -40,7 +64,7 @@
 
   services.ollama = {
     enable = true;
-    acceleration = "cuda";
+    package = pkgs.ollama;
     host = "0.0.0.0";
   };
 

@@ -17,7 +17,7 @@ let
     '';
   };
 
-  myWine = pkgs.wineWowPackages.staging;
+  myWine = pkgs.wineWow64Packages.staging;
 
   myPrismLauncher = pkgs.prismlauncher.override {
     additionalPrograms = [
@@ -25,7 +25,7 @@ let
     ];
 
     jdks = with pkgs; [
-      graalvm-ce
+      graalvmPackages.graalvm-ce
       zulu8
       zulu17
       zulu
@@ -69,7 +69,7 @@ in
     hyprpicker
     waypaper
     hyprpaper
-    swww
+    awww
     wl-clipboard
     nwg-look
 

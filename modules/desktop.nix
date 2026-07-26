@@ -8,12 +8,12 @@
     autoRepeatInterval = 35;
 
     displayManager.setupCommands = ''
-      ${pkgs.xorg.xset}/bin/xset s off
-      ${pkgs.xorg.xset}/bin/xset dpms 30 30 30
+      ${pkgs.xset}/bin/xset s off
+      ${pkgs.xset}/bin/xset dpms 30 30 30
     '';
 
     displayManager.sessionCommands = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr \
+      ${pkgs.xrandr}/bin/xrandr \
         --output DP-1 \
         --primary \
         --mode 1920x1080 \

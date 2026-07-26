@@ -9,7 +9,8 @@
       url = "github:caelestia-dots/shell";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
+      # Track upstream while nixpkgs has removed the boot.bootspec.enable option.
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
