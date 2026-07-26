@@ -2,10 +2,10 @@
 
 let
   mySddmTheme = pkgs.stdenv.mkDerivation {
-    pname = "my-sddm-theme";
+    pname = "sddm-theme";
     version = "1.0";
 
-    src = ../my-sddm-theme;
+    src = ../sddm-theme;
 
     installPhase = ''
       runHook preInstall
