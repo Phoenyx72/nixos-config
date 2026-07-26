@@ -1,0 +1,53 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
+
+[directory]
+style = "#f4c0d0"   # soft pink for all paths
+truncation_length = 2
+truncation_symbol = "□ "
+read_only = " ◈"
+use_os_path_sep = true
+format = '[$path]($style)[$read_only]($read_only_style)'
+repo_root_style = 'bold #f4c0d0'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold #b23a48)'
+
+[character]
+success_symbol = "[❯](#d4cfcf)"      # off-white
+error_symbol   = "[❯](#b23a48)"      # dark burgundy
+vimcmd_symbol  = "[❮](#b23a48)"      # dark burgundy
+
+[git_branch]
+format = "[$branch]($style)"
+style = "#b23a48"  # dark burgundy
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)]($style) ($ahead_behind$stashed)]($style)"
+style = "#d4cfcf"  # off-white for status symbols
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "#b23a48"  # dark burgundy
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "#d4cfcf"   # off-white
+
+[python]
+format = "[$virtualenv]($style) "
+style = "#b23a48"    # dark burgundy

@@ -1,0 +1,31 @@
+{
+    "background": {
+        "wallpaperEnabled": true
+    },
+    "bar": {
+        "status": {
+            "showAudio": true,
+            "showBattery": false,
+            "showLockStatus": true,
+            "showMicrophone": false,
+            "showWifi": false
+        },
+        "workspaces": {
+            "activeTrail": true,
+            "maxWindowIcons": 2,
+            "occupiedBg": false,
+            "perMonitorWorkspaces": true,
+            "shown": 5
+        }
+    },
+    "dashboard": {
+        "performance": {
+            "showBattery": false
+        },
+        "showWeather": false
+    },
+    "services": {
+        "gpuType": "NVIDIA",
+        "useFahrenheit": false
+    }
+}

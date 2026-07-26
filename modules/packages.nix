@@ -63,7 +63,6 @@ in
     # Shells and terminals
     fish
     kitty
-    foot
 
     # Wayland and desktop tools
     hyprland

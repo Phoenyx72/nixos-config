@@ -1,0 +1,13 @@
+function update
+    echo "Updating NixOS..."
+    if sudo nixos-rebuild switch --upgrade
+        echo "Cleaning up..."
+        sudo nix-collect-garbage -d > /dev/null 2>&1
+        echo "Optimizing store..."
+        sudo nix-store --optimise > /dev/null 2>&1
+        sudo cp -r /etc/nixos/refind/* /boot/efi/refind/
+	echo "Done."
+    else
+        echo "Update failed. Skipping garbage collection."
+    end
+end
