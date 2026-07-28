@@ -8,9 +8,14 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("ambxst run clipboard"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("ambxst run wallpapers"))
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("ambxst run overview"))
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("ambxst run powermenu"))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("ambxst run lock-session"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("qylock-lock"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("ambxst run screenshot"))
 hl.bind(mainMod .. " + SHIFT + a", hl.dsp.exec_cmd("ambxst run lens"))
+
+-- Volume Binds
+hl.bind(mainMod .. " + EQUAL", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+hl.bind(mainMod .. " + MINUS", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+
 
 --My essentials
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))

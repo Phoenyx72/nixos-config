@@ -2,7 +2,7 @@ if status is-interactive
     # Starship custom prompt
     starship init fish | source
 
-    alias logout='hyprctl dispatch exit'
+    alias logout='loginctl terminate-user $USER'
 
     # Direnv + Zoxide
     command -v direnv &> /dev/null && direnv hook fish | source

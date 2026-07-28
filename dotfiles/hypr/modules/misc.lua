@@ -23,6 +23,6 @@ hl.config({
     binds = {
         workspace_back_and_forth=false,
         allow_workspace_cycles = true,
-        scroll_event_delay = 50
+        scroll_event_delay = 250
     }
 })

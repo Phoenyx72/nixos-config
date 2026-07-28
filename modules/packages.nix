@@ -1,4 +1,4 @@
-{ pkgs, caelestia-shell, ... }:
+{ pkgs, ... }:
 
 let
   mySddmTheme = pkgs.stdenv.mkDerivation {
@@ -107,9 +107,6 @@ in
     # Containers and virtualisation
     docker
     docker-compose
-
-    # Caelestia
-    caelestia-shell.packages.${pkgs.system}.with-cli
 
     # File managers and desktop applications
     nautilus

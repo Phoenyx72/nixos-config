@@ -25,14 +25,14 @@
     '';
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = false;
-    theme = "my-theme";
-    extraPackages = [
-      pkgs.kdePackages.qt5compat
-    ];
-  };
+#  services.displayManager.sddm = {
+#    enable = true;
+#    wayland.enable = false;
+#    theme = "my-theme";
+#    extraPackages = [
+#      pkgs.kdePackages.qt5compat
+#    ];
+#  };
 
   programs.hyprland = {
     enable = true;
