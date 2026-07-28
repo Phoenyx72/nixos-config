@@ -3,19 +3,37 @@
         "wallpaperEnabled": true
     },
     "bar": {
+        "activeWindow": {
+            "compact": false,
+            "inverted": false
+        },
+        "clock": {
+            "background": false,
+            "showDate": false
+        },
+        "popouts": {
+            "tray": true
+        },
         "status": {
             "showAudio": true,
             "showBattery": false,
-            "showLockStatus": true,
+            "showBluetooth": true,
+            "showLockStatus": false,
             "showMicrophone": false,
+            "showNetwork": true,
             "showWifi": false
         },
+        "tray": {
+            "background": false,
+            "compact": false,
+            "recolour": false
+        },
         "workspaces": {
-            "activeTrail": true,
+            "activeTrail": false,
             "maxWindowIcons": 2,
             "occupiedBg": false,
             "perMonitorWorkspaces": true,
-            "shown": 6
+            "shown": 5
         }
     },
     "dashboard": {
@@ -35,8 +53,16 @@
             ]
         }
     },
+    "launcher": {
+        "useFuzzy": {
+            "apps": true
+        }
+    },
     "services": {
         "gpuType": "NVIDIA",
         "useFahrenheit": false
+    },
+    "sidebar": {
+        "enabled": true
     }
 }

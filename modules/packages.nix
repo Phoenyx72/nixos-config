@@ -54,6 +54,16 @@ in
     unzip
     rsync
 
+    #Ambxst Dependencies
+    quickshell
+    rofi
+    fuzzel
+    grim
+    slurp
+    playerctl
+    brightnessctl
+    pamixer
+
     # Applications
     apostrophe
     chromium
