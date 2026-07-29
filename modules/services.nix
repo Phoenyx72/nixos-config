@@ -27,6 +27,13 @@
 {
   security.polkit.enable = true;
 
+  services.code-server = {
+    enable = true;
+    user = "phxo";
+    host = "0.0.0.0";
+    port = 8081;
+  };
+
   services = {
     pipewire = {
       enable = true;

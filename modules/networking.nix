@@ -7,6 +7,7 @@
 					                                5353
 					                                9757
                                           25565
+                                          8081
                                         ];
   networking.firewall.allowedUDPPorts = [ 7777
 					                                9757
