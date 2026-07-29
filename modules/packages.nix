@@ -69,6 +69,7 @@ in
     chromium
     vscodium
     gimp
+    onlyoffice-desktopeditors
 
     # Shells and terminals
     fish
