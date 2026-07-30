@@ -42,7 +42,6 @@ in
     inotify-tools
     lsof
     trash-cli
-    btop
     htop
     jq
     eza
@@ -53,6 +52,13 @@ in
     android-tools
     unzip
     rsync
+    (btop.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ makeWrapper ];
+      preFixup = ''
+        wrapProgram $out/bin/btop \
+          --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
+      '';
+    }))
 
     #Ambxst Dependencies
     quickshell
