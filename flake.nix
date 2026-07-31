@@ -16,7 +16,7 @@
     };
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
     nixpkgs-jellyfin,
@@ -28,6 +28,8 @@
       system = "x86_64-linux";
 
       specialArgs = {
+        inherit inputs;
+
         jellyfinPkgs = import nixpkgs-jellyfin {
           system = "x86_64-linux";
           config.allowUnfree = true;

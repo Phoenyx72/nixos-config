@@ -3,6 +3,7 @@ if status is-interactive
     starship init fish | source
 
     alias logout='loginctl terminate-user $USER'
+    alias nixfetch="~/.config/fastfetch/nixfetch.js"
 
     # Direnv + Zoxide
     command -v direnv &> /dev/null && direnv hook fish | source

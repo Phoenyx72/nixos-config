@@ -1,3 +1,4 @@
 function fish_greeting
-	fastfetch
+	#fastfetch
+	nixfetch
 end

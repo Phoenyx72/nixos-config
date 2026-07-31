@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   mySddmTheme = pkgs.stdenv.mkDerivation {
@@ -59,6 +59,7 @@ in
           --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
       '';
     }))
+    nodejs
 
     #Ambxst Dependencies
     quickshell
