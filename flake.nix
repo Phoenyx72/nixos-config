@@ -23,7 +23,19 @@
     lanzaboote,
     qylock,
     ...
-  }: {
+  }: let
+    system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    glfw-waywall = pkgs.callPackage ./pkgs/glfw-waywall.nix {};
+  in
+  {
+    packages.${system}.glfw-waywall = glfw-waywall;
+
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 

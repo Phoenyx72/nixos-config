@@ -61,6 +61,25 @@ in
     }))
     nodejs
 
+    # Waywall Dependencies
+    libspng
+    cmake
+    meson
+    mesa
+    luajit
+    wayland
+    libxkbcommon
+    libxkbcommon.dev
+    xwayland
+    wayland-protocols
+    wayland-scanner
+    libXcursor
+    libXi
+    libXinerama
+    libXrandr
+    jdk8
+    waywall
+
     #Ambxst Dependencies
     quickshell
     rofi

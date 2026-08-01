@@ -21,6 +21,9 @@ hl.bind(mainMod .. " + MINUS", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_
 --My essentials
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind("CTRL + SHIFT + S", function()
+    hl.dsp.exec_cmd("stronghold-calc")
+end)
 
 -- Window Management
 for i = 1, 10 do

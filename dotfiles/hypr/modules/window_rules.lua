@@ -57,3 +57,16 @@ hl.window_rule({
         fullscreen = true,
     }
 })
+
+hl.window_rule({
+    name = "Stronghold Locator",
+    match = {
+        class = "Tk",
+    },
+
+    float = true,
+    pin = true,
+    move = "1450 510",
+    size = "450 550",
+    opacity = "0.75"
+})
