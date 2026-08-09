@@ -157,5 +157,13 @@ in
 
     # Locally packaged SDDM theme
     mySddmTheme
+
+    # I feel like messing with Gnome
+    gnome-extension-manager
+    gnome-tweaks
+    gnome-themes-extra
+    gtk-engine-murrine
+    sassc
+    lm_sensors
   ];
 }
