@@ -49,6 +49,26 @@
         "type": "github"
       }
     },
+    "inir": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786494043,
+        "narHash": "sha256-xXv5z6mToAM/Ev09jZMz54R8CKL0uRhtqfq7yzWTnh4=",
+        "owner": "snowarch",
+        "repo": "iNiR",
+        "rev": "fdb723afbde6396985fa0b67accaa6f96a05c393",
+        "type": "github"
+      },
+      "original": {
+        "owner": "snowarch",
+        "repo": "iNiR",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -149,6 +169,7 @@
     },
     "root": {
       "inputs": {
+        "inir": "inir",
         "lanzaboote": "lanzaboote",
         "nixpkgs": "nixpkgs",
         "nixpkgs-jellyfin": "nixpkgs-jellyfin",

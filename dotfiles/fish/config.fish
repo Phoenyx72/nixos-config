@@ -4,7 +4,7 @@ if status is-interactive
 
     alias logout='loginctl terminate-user $USER'
     alias nixfetch="~/.config/fastfetch/nixfetch.js"
-
+    alias lyrics='ttyd -p 8765 -W /home/phxo/LyricsMPRIS-Rust/target/release/lyricsmpris --visible-lines 1'
     # Direnv + Zoxide
     command -v direnv &> /dev/null && direnv hook fish | source
     command -v zoxide &> /dev/null && zoxide init fish --cmd cd | source

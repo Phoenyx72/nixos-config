@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   services.xserver = {
@@ -33,6 +33,16 @@
 #      pkgs.kdePackages.qt5compat
 #    ];
 #  };
+
+  imports = [
+    inputs.inir.nixosModules.inir
+  ];
+
+  programs.inir = {
+    enable = true;
+  };
+
+  programs.niri.enable = true;
 
   services.desktopManager.gnome.enable = true;
   services.gnome.core-apps.enable = false;
@@ -75,7 +85,20 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
     ];
+
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+
+      niri = {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      };
+    };
   };
 
   programs.appimage = {

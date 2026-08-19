@@ -4,6 +4,11 @@
 
     nixpkgs-jellyfin.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    inir = {
+      url = "github:snowarch/iNiR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
       # Track upstream while nixpkgs has removed the boot.bootspec.enable option.
       url = "github:nix-community/lanzaboote";

@@ -60,6 +60,7 @@ in
       '';
     }))
     nodejs
+    ttyd
 
     # Waywall Dependencies
     libspng
