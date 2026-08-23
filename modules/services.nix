@@ -37,7 +37,6 @@
   services = {
     pipewire = {
       enable = true;
-
       alsa.enable = true;
       pulse.enable = true;
       wireplumber.enable = true;
@@ -81,17 +80,18 @@
     capSysAdmin = true; # needed for Wayland/KMS capture
     openFirewall = true;
   };
+
   programs = {
     appimage.enable = true;
     steam.enable = true;
-
+    localsend.enable = true;
+    
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
       package = pkgs.obs-studio.override {
         cudaSupport = true;
       };
-
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-backgroundremoval

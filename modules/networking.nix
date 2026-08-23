@@ -39,8 +39,4 @@
       workstation = true;
     };
   };
-
-  programs.localsend = {
-    enable = true;
-  };
 }

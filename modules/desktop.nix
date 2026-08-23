@@ -12,6 +12,8 @@
       ${pkgs.xset}/bin/xset dpms 30 30 30
     '';
 
+  # My Monitors
+
     displayManager.sessionCommands = ''
       ${pkgs.xrandr}/bin/xrandr \
         --output DP-1 \
@@ -25,6 +27,7 @@
     '';
   };
 
+  # SDDM Lock ScreenCast
 #  services.displayManager.sddm = {
 #    enable = true;
 #    wayland.enable = false;
@@ -34,15 +37,16 @@
 #    ];
 #  };
 
-  imports = [
-    inputs.inir.nixosModules.inir
-  ];
 
-  programs.inir = {
-    enable = true;
-  };
+  # Niri Setup
 
   programs.niri.enable = true;
+  imports = [ inputs.inir.nixosModules.inir ];
+
+  programs.inir.enable = true;
+
+
+  # Gnome Setup
 
   services.desktopManager.gnome.enable = true;
   services.gnome.core-apps.enable = false;
@@ -50,11 +54,15 @@
   services.gnome.games.enable = false;
   environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 
+
+  # Hyprland Setup
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
+  # AutoLogin
   services.displayManager = {
     autoLogin = {
       enable = true;
@@ -62,6 +70,7 @@
     };
     defaultSession = "hyprland";
   };
+
   environment.sessionVariables = {
     EDITOR = "apostrophe";
     VISUAL = "apostrophe";
@@ -85,7 +94,7 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gnome
     ];
 
     config = {
@@ -94,7 +103,6 @@
       };
 
       niri = {
-        default = [ "gtk" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
       };
