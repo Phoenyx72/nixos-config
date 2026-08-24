@@ -10,7 +10,7 @@
     };
 
     noctalia = {
-      url = "githhub:noctalia-dev/noctalia";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -61,7 +61,6 @@
 
       modules = [
         ./configuration.nix
-        ./noctalia.nix
         lanzaboote.nixosModules.lanzaboote
 
         qylock.nixosModules.default

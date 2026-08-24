@@ -110,6 +110,7 @@ in
     awww
     wl-clipboard
     nwg-look
+    noctalia
 
     # Media and graphics
     mpv
