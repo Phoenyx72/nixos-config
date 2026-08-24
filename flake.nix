@@ -9,8 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia = {
+      url = "githhub:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lanzaboote = {
-      # Track upstream while nixpkgs has removed the boot.bootspec.enable option.
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -19,7 +23,9 @@
       url = "github:Darkkal44/qylock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
+
 
   outputs = inputs@{
     self,
@@ -55,6 +61,7 @@
 
       modules = [
         ./configuration.nix
+        ./noctalia.nix
         lanzaboote.nixosModules.lanzaboote
 
         qylock.nixosModules.default

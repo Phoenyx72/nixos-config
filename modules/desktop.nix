@@ -41,9 +41,8 @@
   # Niri Setup
 
   programs.niri.enable = true;
-  imports = [ inputs.inir.nixosModules.inir ];
-
-  programs.inir.enable = true;
+  #imports = [ inputs.inir.nixosModules.inir ];
+  #programs.inir.enable = true;
 
 
   # Gnome Setup
