@@ -1,21 +1,11 @@
 {
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+  	enable = true;
+	wifi.backend = "iwd";
+  };
 
-  networking.firewall.allowedTCPPorts = [ 7000
-                                          7777
-                                          8888
-					                                5353
-					                                9757
-                                          25565
-                                          8081
-                                          10767
-                                          8765
-                                        ];
-  networking.firewall.allowedUDPPorts = [ 7777
-					                                9757
-					                                ];
-
-  networking.firewall.interfaces."br-d042f891e184".allowedTCPPorts = [ 11434 ];
+  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ ];
 
   services.tailscale.enable = true;
 
