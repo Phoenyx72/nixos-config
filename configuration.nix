@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./apple-silicon-support
     ./modules
   ];
 
@@ -15,6 +16,8 @@
     automatic = true;
     options = "--delete-older-than 5d";
   };
+
+  hardware.asahi.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
