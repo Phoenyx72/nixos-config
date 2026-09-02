@@ -1,170 +1,79 @@
 { pkgs, inputs, ... }:
 
-let
-  mySddmTheme = pkgs.stdenv.mkDerivation {
-    pname = "sddm-theme";
-    version = "1.0";
+environment.systemPackages = with pkgs; [
+  # Command-line utilities
+  wget
+  git
+  fastfetch
+  tree
+  inotify-tools
+  lsof
+  trash-cli
+  htop
+  jq
+  eza
+  starship
+  vim
+  libimobiledevice
+  ifuse
+  android-tools
+  unzip
+  rsync
+  nodejs
+  ttyd
 
-    src = ../sddm-theme;
+  # Applications
+  apostrophe
+  chromium
+  vscodium
+  onlyoffice-desktopeditors
 
-    installPhase = ''
-      runHook preInstall
+  # Shells and terminals
+  fish
+  kitty
 
-      mkdir -p $out/share/sddm/themes/my-theme
-      cp -r ./* $out/share/sddm/themes/my-theme/
+  # Wayland and desktop tools
+  awww
+  wl-clipboard
+  nwg-look
 
-      runHook postInstall
-    '';
-  };
+  # Media and graphics
+  mpv
+  vlc
+  ffmpeg
+  vulkan-tools
+  libGL
+  libxcb
+  v4l-utils
+  usbmuxd
 
-  myWine = pkgs.wineWow64Packages.staging;
+  # Gaming and Windows compatibility
+  steam
+  discord
+  freerdp
+  winePackages.full
+  winetricks
+  myPrismLauncher
+  ryubing
 
-  myPrismLauncher = pkgs.prismlauncher.override {
-    additionalPrograms = [
-      pkgs.ffmpeg
-    ];
+  # File managers and desktop applications
+  nautilus
+  kdePackages.filelight
+  kdePackages.okular
+  gnome-font-viewer
+  papirus-icon-theme
 
-    jdks = with pkgs; [
-      graalvmPackages.graalvm-ce
-      zulu8
-      zulu17
-      zulu
-    ];
-  };
-in
-{
-  environment.systemPackages = with pkgs; [
-    # Command-line utilities
-    wget
-    git
-    fastfetch
-    tree
-    inotify-tools
-    lsof
-    trash-cli
-    htop
-    jq
-    eza
-    starship
-    vim
-    libimobiledevice
-    ifuse
-    android-tools
-    unzip
-    rsync
-    (btop.overrideAttrs (old: {
-      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ makeWrapper ];
-      preFixup = ''
-        wrapProgram $out/bin/btop \
-          --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
-      '';
-    }))
-    nodejs
-    ttyd
-
-    # Waywall Dependencies
-    libspng
-    cmake
-    meson
-    mesa
-    luajit
-    wayland
-    libxkbcommon
-    libxkbcommon.dev
-    xwayland
-    wayland-protocols
-    wayland-scanner
-    libXcursor
-    libXi
-    libXinerama
-    libXrandr
-    jdk8
-    waywall
-
-    #Ambxst Dependencies
-    quickshell
-    rofi
-    fuzzel
-    grim
-    slurp
-    playerctl
-    brightnessctl
-    pamixer
-
-    # Applications
-    apostrophe
-    chromium
-    vscodium
-    gimp
-    onlyoffice-desktopeditors
-
-    # Shells and terminals
-    fish
-    kitty
-
-    # Wayland and desktop tools
-    hyprland
-    hyprpicker
-    waypaper
-    hyprpaper
-    awww
-    wl-clipboard
-    nwg-look
-
-    # Media and graphics
-    mpv
-    vlc
-    ffmpeg
-    vulkan-tools
-    libGL
-    libxcb
-    v4l-utils
-    droidcam
-    usbmuxd
-
-    # Gaming and Windows compatibility
-    steam
-    discord
-    spotify
-    freerdp
-    myWine
-    winetricks
-    myPrismLauncher
-    ryubing
-
-    # Containers and virtualisation
-    docker
-    docker-compose
-
-    # File managers and desktop applications
-    nautilus
-    kdePackages.filelight
-    kdePackages.okular
-    gnome-font-viewer
-    papirus-icon-theme
-
-    # System administration
-    efibootmgr
-    ntfs3g
-    alsa-lib
-    atk
-    at-spi2-atk
-    cups
-    gtk3
-    nss
-    sbctl
-    gparted
-    polkit_gnome
-
-    # Locally packaged SDDM theme
-    mySddmTheme
-
-    # I feel like messing with Gnome
-    gnome-extension-manager
-    gnome-tweaks
-    gnome-themes-extra
-    gtk-engine-murrine
-    sassc
-    lm_sensors
+  # System administration
+  efibootmgr
+  ntfs3g
+  alsa-lib
+  atk
+  at-spi2-atk
+  cups
+  gtk3
+  nss
+  sbctl
+  gparted
+  polkit_gnome
   ];
 }
