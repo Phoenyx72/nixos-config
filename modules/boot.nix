@@ -3,21 +3,11 @@
 {
   boot = {
     loader = {
-      grub.enable = false;
-
-      systemd-boot.enable = lib.mkForce false;
-
-      refind.enable = false;
+      systemd-boot.enable = true;
 
       efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+        canTouchEfiVariables = false;
       };
-    };
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
     };
 
     kernelModules = [
