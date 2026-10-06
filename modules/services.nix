@@ -81,6 +81,18 @@
     openFirewall = true;
   };
 
+  services.keyd = {
+  enable = true;
+  keyboards.default = {
+      ids = [ "*" ]; # Match all keyboards
+      settings = {
+        main = {
+          meta = "overload(meta, M-space)";
+      };
+    };
+  };
+};
+
   programs = {
     appimage.enable = true;
     steam.enable = true;
@@ -103,19 +115,19 @@
     };
   };
 
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome authentication agent";
+#  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+#    description = "polkit-gnome authentication agent";
+#
+#    wantedBy = [
+#      "default.target"
+#    ];
 
-    wantedBy = [
-      "default.target"
-    ];
-
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-    };
-  };
+#    serviceConfig = {
+#      Type = "simple";
+#      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+#     Restart = "on-failure";
+#    };
+#  };
 
   systemd.user.services.wayvnc = {
     description = "WayVNC Remote Desktop Server";

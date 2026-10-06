@@ -111,6 +111,7 @@ in
     wl-clipboard
     nwg-look
     noctalia
+    xwayland-satellite
 
     # Media and graphics
     mpv
@@ -155,7 +156,7 @@ in
     nss
     sbctl
     gparted
-    polkit_gnome
+    #polkit_gnome
 
     # Locally packaged SDDM theme
     mySddmTheme

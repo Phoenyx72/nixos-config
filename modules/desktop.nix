@@ -39,7 +39,7 @@
 
 
   # Niri Setup
-
+  programs.xwayland.enable = true;
   programs.niri.enable = true;
   #imports = [ inputs.inir.nixosModules.inir ];
   #programs.inir.enable = true;
@@ -67,7 +67,7 @@
       enable = true;
       user = "phxo";
     };
-    defaultSession = "hyprland";
+    defaultSession = "niri";
   };
 
   environment.sessionVariables = {

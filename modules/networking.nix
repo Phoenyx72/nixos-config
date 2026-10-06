@@ -4,12 +4,13 @@
   networking.firewall.allowedTCPPorts = [ 7000
                                           7777
                                           8888
-					                                5353
-					                                9757
+					                      5353
+					                      9757
                                           25565
                                           8081
                                           10767
                                           8765
+										  443
                                         ];
   networking.firewall.allowedUDPPorts = [ 7777
 					                                9757
