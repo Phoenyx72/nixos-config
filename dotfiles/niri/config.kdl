@@ -1,0 +1,442 @@
+// ============================================================================
+// NIRI CONFIGURATION - Base for iNiR (ii)
+// ============================================================================
+// Minimal base config - customize to your needs
+// Wiki: https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// ============================================================================
+
+spawn-at-startup "noctalia"
+
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup;
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// Outputs (example - disabled by default)
+// Run `niri msg outputs` inside a niri session to see connector names and modes.
+// Then edit and uncomment this block to pin a specific monitor layout.
+
+// -output "eDP-1" {
+    // mode "1920x1080@60"
+    // scale 1
+    // transform "normal"
+    // position x=0 y=0
+// }
+
+// Predefined workspaces for Monitor 1 (DP-1)
+workspace "1" {
+    open-on-output "DP-1"
+}
+workspace "2" {
+    open-on-output "DP-1"
+}
+workspace "3" {
+    open-on-output "DP-1"
+}
+workspace "4" {
+    open-on-output "DP-1"
+}
+workspace "5" {
+    open-on-output "DP-1"
+}
+
+
+// Predefined workspaces for Monitor 2 (HDMI-A-1)
+workspace "6" {
+    open-on-output "HDMI-A-1"
+}
+workspace "7" {
+    open-on-output "HDMI-A-1"
+}
+workspace "8" {
+    open-on-output "HDMI-A-1"
+}
+workspace "9" {
+    open-on-output "HDMI-A-1"
+}
+workspace "10" {
+    open-on-output "HDMI-A-1"
+}
+
+
+// ============================================================================
+// INPUT
+// ============================================================================
+
+input {
+    focus-follows-mouse
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        repeat-delay 250
+        repeat-rate 50
+    }
+    touchpad {
+        tap
+        tap-button-map "left-right-middle"
+    }
+    mouse {
+        accel-profile "flat"
+    }
+
+    mod-key "Super"
+    mod-key-nested "Alt"
+}
+
+// ============================================================================
+// LAYOUT
+// ============================================================================
+
+layout {
+    gaps 25
+    background-color "transparent"
+    center-focused-column "never"
+    
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    
+    default-column-width { 
+        proportion 0.5
+    }
+    
+    border {
+        off
+        width 4
+        active-color   "#707070"
+        inactive-color "#d0d0d0"
+        urgent-color   "#cc4444"
+    }
+    
+    focus-ring {
+        off
+        width 1
+        active-color   "#808080"
+        inactive-color "#505050"
+    }
+    
+    shadow {
+       // off
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+    
+    struts { }
+}
+
+gestures {
+    hot-corners {
+        // off
+    }
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+    hide-when-typing
+}
+
+overview {
+    zoom 0.75
+
+    // Uncomment to give the overview a solid backdrop between workspaces.
+    //backdrop-color "#777777"
+
+    // Uncomment to disable the workspace shadow in the overview.
+    //workspace-shadow {
+    //    off
+    //}
+}
+
+// ============================================================================
+// WINDOW RULES
+// ============================================================================
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+
+    match is-active=false
+    min-width 1000
+    default-column-width { fixed 1247; }
+    opacity 0.9
+}
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+// Tuned to complement quickshell's expressive Material motion curves
+// QS uses ~500ms for main movements, ~400ms enter, ~200ms exit
+
+animations {
+    // Uncomment to turn off all animations.
+    // You can also put "off" into each individual animation to disable it.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+
+    // Individual animations.
+
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    exit-confirmation-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    recent-windows-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.001
+    }
+}
+
+// ============================================================================
+// ENVIRONMENT
+// ============================================================================
+
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_MENU_PREFIX "plasma-"  // Required for Dolphin/KDE app file associations
+    QT_QPA_PLATFORM "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_LOGGING_RULES "quickshell.dbus.properties=false"
+    
+    // Qt theming: kde platform reads colors from kdeglobals (requires plasma-integration pkg)
+    // The installer falls back to qt6ct only if plasma-integration is not installed
+    QT_QPA_PLATFORMTHEME "kde"
+    QT_STYLE_OVERRIDE "Darkly"
+    
+    // Quickshell Python virtual environment
+    INIR_VENV "$HOME/.local/state/quickshell/.venv"
+    ILLOGICAL_IMPULSE_VIRTUAL_ENV "$HOME/.local/state/quickshell/.venv"
+}
+
+// ============================================================================
+// STARTUP
+// ============================================================================
+
+// Import XDG_MENU_PREFIX to systemd for Dolphin/KDE app file associations
+spawn-at-startup "bash" "-c" "systemctl --user import-environment XDG_MENU_PREFIX && kbuildsycoca6"
+
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+// iNiR is started by the user systemd service (inir.service), not spawn-at-startup.
+
+// ============================================================================
+// KEYBINDINGS
+// ============================================================================
+
+binds {
+    // System
+    Mod+Tab repeat=false { toggle-overview; }
+    Mod+Shift+E { quit; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    
+    // ii Overlay
+    //Super+G { spawn "qs" "-c" "inir" "ipc" "call" "overlay" "toggle"; }
+
+    // ii Overview (daemon)
+    Mod+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+W hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+    
+    Mod+Return { spawn "kitty"; }
+
+    Mod+Q { close-window; }
+
+    // ii Clipboard
+    Mod+V hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    
+    // ii Lock screen
+    Mod+Alt+L allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "lock" "activate"; }
+    
+    // ii Region tools
+    Mod+Shift+S { spawn "qs" "-c" "inir" "ipc" "call" "region" "screenshot"; }
+    Mod+Shift+X { spawn "qs" "-c" "inir" "ipc" "call" "region" "ocr"; }
+    Mod+Shift+A { spawn "qs" "-c" "inir" "ipc" "call" "region" "search"; }
+    
+    // ii Wallpaper selector
+    Ctrl+Alt+T { spawn "qs" "-c" "inir" "ipc" "call" "wallpaperSelector" "toggle"; }
+    
+    // ii Settings
+    Mod+Comma { spawn "qs" "-c" "inir" "ipc" "call" "settings" "open"; }
+    
+    // ii Cheatsheet
+    Mod+Slash { spawn "qs" "-c" "inir" "ipc" "call" "cheatsheet" "toggle"; }
+    
+    // ii Panel family (cycle between Material ii and Waffle styles)
+    Mod+Shift+W { spawn "qs" "-c" "inir" "ipc" "call" "panelFamily" "cycle"; }
+    
+    // Applications (uses configured terminal from Settings)
+    // Mod+T { spawn "bash" "-c" "$HOME/.config/quickshell/inir/scripts/launch-terminal.sh"; }
+    // Mod+Return { spawn "bash" "-c" "$HOME/.config/quickshell/inir/scripts/launch-terminal.sh"; }
+    
+    // Window management
+    // Mod+Q repeat=false { spawn "bash" "-c" "$HOME/.config/quickshell/inir/scripts/close-window.sh"; }
+    Mod+B { maximize-column; }
+    Mod+G { fullscreen-window; }
+    Mod+T { toggle-window-floating; }
+
+    // Focus
+    Mod+Left { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up { focus-window-up; }
+    Mod+Down { focus-window-down; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+    
+    // Move windows
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up { move-window-up; }
+    Mod+Shift+Down { move-window-down; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+L { move-column-right; }
+    
+    // Workspaces
+    Mod+1 { focus-workspace "1"; }
+    Mod+2 { focus-workspace "2"; }
+    Mod+3 { focus-workspace "3"; }
+    Mod+4 { focus-workspace "4"; }
+    Mod+5 { focus-workspace "5"; }
+    Mod+6 { focus-workspace "6"; }
+    Mod+7 { focus-workspace "7"; }
+    Mod+8 { focus-workspace "8"; }
+    Mod+9 { focus-workspace "9"; }
+    Mod+0 { focus-workspace "10"; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+    
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    
+    // Screenshots (native)
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+    
+    // ========================================================================
+    // HARDWARE KEYS - Audio, Brightness, Media
+    // ========================================================================
+    // These use ii IPC so the OSD (On Screen Display) shows feedback
+    
+    // Volume (hardware keys)
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "volumeUp"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "volumeDown"; }
+    XF86AudioMute allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "audio" "micMute"; }
+    
+    // Brightness (hardware keys)
+    XF86MonBrightnessUp allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "brightness" "increment"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "qs" "-c" "inir" "ipc" "call" "brightness" "decrement"; }
+    
+    // Media playback (hardware keys)
+    XF86AudioPlay { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPause { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioNext { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "next"; }
+    XF86AudioPrev { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "previous"; }
+    
+    // Music control (keyboard alternatives for keyboards without media keys)
+    Ctrl+Mod+Space { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
+    Mod+Alt+N { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "next"; }
+    Mod+Alt+P { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "previous"; }
+    Mod+Shift+M { spawn "qs" "-c" "inir" "ipc" "call" "audio" "mute"; }
+    Mod+Shift+P { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "playPause"; }
+    Mod+Shift+N { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "next"; }
+    Mod+Shift+B { spawn "qs" "-c" "inir" "ipc" "call" "mpris" "previous"; }
+    
+    // Power / Session
+    Mod+Shift+Q { spawn "qs" "-c" "inir" "ipc" "call" "session" "toggle"; }
+    Ctrl+Shift+T { spawn "qs" "-c" "inir" "ipc" "call" "wallpaperSelector" "toggle"; }
+
+}
+
+// Place the regular wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-wallpaper"
+  place-within-backdrop true
+}
+
+output "DP-1" {
+    mode "1920x1080@143.855"
+}
